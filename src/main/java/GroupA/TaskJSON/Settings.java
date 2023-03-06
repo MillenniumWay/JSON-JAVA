@@ -20,8 +20,9 @@ public class Settings {
 
         // Создаю объект для помещения в JSON
          Jakarta jakarta = new Jakarta("JakartaFirst", "1", "SLow");
+         Jakarta jakarta1 = new Jakarta("Ann", "2", "Hyper");
          List<Jakarta> arrayList = new ArrayList<>();
-         arrayList.add(jakarta);
+         arrayList.add(jakarta);  arrayList.add(jakarta1);
 
          // Определяю структуру JSON
          String first =   "{  \"Jakarta\": "; String last = "}";
@@ -38,8 +39,8 @@ public class Settings {
            fileOutputStream.write(jsonArray.toJSONString().getBytes());
            fileOutputStream.write(last.getBytes());
 
-           System.out.println("writeToJson(): " + jsonArray.toJSONString());
-
+             System.out.println("Success > Objects Added to JSON");
+             System.out.println("--------------------------");
        } catch (Exception e){
            System.out.println("Write close - Error " + e.toString());
        }
@@ -58,7 +59,7 @@ public class Settings {
             // Извлекаем по ключу ("Jakarta") из структуры JSON
             JSONArray jakartaParse = (JSONArray) jsonObject.get(TAG_KEY);
 
-
+            // Массив для хранения занчений из JSON
             List<Jakarta> jakartaArray = new ArrayList<>();
 
 
@@ -71,7 +72,10 @@ public class Settings {
                 String version = (String) arrayObjects.get(TAG_VERSION);
                 String tech = (String) arrayObjects.get(TAG_TECH);
 
-                // Помещаю их в лист
+                // Делаю  объекты на основе класса Jakarta,
+                // помещаю в него параметры из JSON
+                // ввиде зачений для переменных по циклу
+
                Jakarta jakarta1 = new Jakarta(name, version, tech);
                 jakartaArray.add(jakarta1);
 
